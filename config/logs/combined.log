@@ -1,0 +1,19 @@
+{"level":"warn","message":"404 - Page not found: /","timestamp":"2026-03-12T06:31:31.070Z"}
+{"level":"error","message":"500 - No default engine was specified and no extension was provided. - / - GET - ::1","timestamp":"2026-03-12T06:31:31.076Z"}
+{"level":"warn","message":"404 - Page not found: /register","timestamp":"2026-03-12T10:15:28.992Z"}
+{"level":"error","message":"500 - No default engine was specified and no extension was provided. - /register - GET - ::ffff:127.0.0.1","timestamp":"2026-03-12T10:15:29.011Z"}
+{"level":"warn","message":"404 - Page not found: /register","timestamp":"2026-03-12T10:15:49.146Z"}
+{"level":"error","message":"500 - No default engine was specified and no extension was provided. - /register - POST - ::ffff:127.0.0.1","timestamp":"2026-03-12T10:15:49.146Z"}
+{"level":"warn","message":"404 - Page not found: /auth/register","timestamp":"2026-03-12T10:32:52.114Z"}
+{"level":"error","message":"500 - No default engine was specified and no extension was provided. - /auth/register - POST - ::ffff:127.0.0.1","timestamp":"2026-03-12T10:32:52.116Z"}
+{"level":"warn","message":"404 - Page not found: /api/auth/register","timestamp":"2026-03-12T10:33:20.106Z"}
+{"level":"error","message":"500 - No default engine was specified and no extension was provided. - /api/auth/register - POST - ::ffff:127.0.0.1","timestamp":"2026-03-12T10:33:20.108Z"}
+{"level":"error","message":"400 - Expected ':' after property name in JSON at position 11 (line 2 column 10) - /auth/login - POST - ::ffff:127.0.0.1","timestamp":"2026-03-12T11:40:03.322Z"}
+{"level":"warn","message":"404 - Page not found: /cart","timestamp":"2026-03-16T09:17:51.928Z"}
+{"level":"warn","message":"404 - Page not found: /cart/addproduct","timestamp":"2026-03-16T09:18:03.105Z"}
+{"level":"error","message":"400 - Expected ',' or '}' after property value in JSON at position 49 (line 5 column 3) - /cart/add - POST - ::ffff:127.0.0.1","timestamp":"2026-03-16T11:17:35.556Z"}
+{"level":"warn","message":"404 - Page not found: /auth/profile","timestamp":"2026-03-17T05:58:53.123Z"}
+{"level":"warn","message":"404 - Page not found: /auth/refresh/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjhlZDU2N2IwYzA0YTViNzIyZDA3OSIsImlhdCI6MTc3MzcyNzA2MiwiZXhwIjoxNzc0MzMxODYyfQ.nh7_IcjKFH4RSDq5IoMougTBYBhMFjET7ha-YV_Op60","timestamp":"2026-03-17T06:20:59.624Z"}
+{"level":"error","message":"400 - Expected double-quoted property name in JSON at position 136 (line 9 column 3) - /product - POST - ::ffff:127.0.0.1","timestamp":"2026-03-17T06:28:19.220Z"}
+{"level":"error","message":"400 - Unexpected end of JSON input - /cart/add/69b8f7d8f86fd09b4e1c9416 - POST - ::ffff:127.0.0.1","timestamp":"2026-03-17T09:53:11.450Z"}
+{"level":"warn","message":"404 - Page not found: /cart/69b91b370cc2bc4767fbd3a4","timestamp":"2026-03-17T10:02:14.254Z"}
