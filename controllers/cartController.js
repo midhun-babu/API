@@ -2,7 +2,7 @@ import * as cartService from "../services/cartService.js";
 
 export const addItem = async (req, res) => {
   try {
-    const { quantity } = req.body;
+    const { quantity = 1 } = req.body;
     const userId = req.user.id;
     const productId = req.params.id;
 
@@ -25,7 +25,7 @@ export const addItem = async (req, res) => {
 
 export const getCart = async (req, res) => {
   try {
-    const cart = await cartService.getCart(req.user.id);
+    const cart = await cartService.getCart(req.params.id);
     if (!cart) return res.status(404).json({ message: "Cart not found" });
     res.status(200).json(cart);
   } catch (error) {
@@ -33,15 +33,35 @@ export const getCart = async (req, res) => {
   }
 };
 
-export const removeItem = async (req, res) => {
-  try {
-    const { productId } = req.params;
-    const cart = await cartService.removeFromCart(req.user.id, productId);
+export const getAllCart = async (req,res)=>{
+  try{
+    const cart= await cartService.getAllCart();
+    if(!cart) return res.status(404).json ({message:"No carts Exist"});
     res.status(200).json(cart);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+  }catch(error){
+    res.status(500).json({message:error.message});
   }
 };
+
+export const removeItem = async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+    const productId = req.params.id;
+    const quantity = req.query.qty;  
+
+    const updatedCart = await cartService.removeFromCart(userId, productId, quantity);
+    
+    if (!updatedCart) {
+      return res.status(404).json({ message: "Cart not found" });
+    }
+
+    res.status(200).json(updatedCart);
+  } catch (error) {
+   
+    next(error); 
+  }
+};
+
 
 export const clearCart = async (req, res) => {
   try {

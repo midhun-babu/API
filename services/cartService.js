@@ -42,20 +42,44 @@ export const addToCart = async (userId, productId, quantityInput) => {
   return await cart.save();
 };
 
+export const getAllCart = async()=>{
+  return await cartQueries.getCarts();
+}
+
 export const getCart = async (userId) => {
   return await cartQueries.getCartByUserId(userId);
 };
 
-export const removeFromCart = async (userId, productId) => {
+ export const removeFromCart = async (userId, productId, quantityInput) => {
+  if (!productId) {
+    throw { statusCode: 400, message: "Product ID is required" };
+  }
+
   const cart = await cartQueries.getCartByUserId(userId);
   if (!cart) return null;
 
-  cart.products = cart.products.filter(
-    (p) => p.productid.toString() !== productId.toString()
-  );
+  const removeQty = Number(quantityInput) || 1;
+
+  const itemIndex = cart.products.findIndex((p) => {
+    return p.productid && p.productid.toString() === productId.toString();
+  });
+
+  if (itemIndex > -1) { 
+    const currentQty = cart.products[itemIndex].quantity;
+
+    if (currentQty <= removeQty) {
+      cart.products.splice(itemIndex, 1);
+    } else {
+      cart.products[itemIndex].quantity -= removeQty;
+    }
+  } else {
+    throw { statusCode: 404, message: "Product not found in cart" };
+  }
 
   return await cart.save();
 };
+
+
 
 export const clearCart = async (userId) => {
   return await cartQueries.updateCart(userId, { products: [] });

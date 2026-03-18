@@ -6,6 +6,10 @@ export const getCartByUserId = async (userId) => {
   });
 };
 
+export const getCarts = async () => {
+  return await Cart.find({}).populate("products.productid"); 
+};
+
 
 export const getCartByID = async (userId) => {
   return await Cart.findOne({ 
@@ -15,6 +19,7 @@ export const getCartByID = async (userId) => {
 };
 
  
+
 export const updateCart = async (userId, updateData) => {
   return await Cart.findOneAndUpdate(
     { userid: userId, active: true },
@@ -28,5 +33,18 @@ export const deleteCart = async (userId) => {
     { userid: userId }, 
     { active: false }, 
     { new: true }
+  );
+};
+
+export const clearCart = async (userId) => {
+  return await Cart.findOneAndUpdate(
+    { userid: userId },
+    { 
+      $set: { 
+        products: [], 
+        totalPrice: 0 
+      } 
+    },
+    { new: true } 
   );
 };

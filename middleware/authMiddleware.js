@@ -13,7 +13,6 @@ export const verifyToken = (req, res, next) => {
   if (!token) {
     return res.status(401).json({ message: "No token, authorization denied" });
   }
-
   try {
     const decoded = jwt.verify(token, process.env.access_token);
     req.user = decoded;
@@ -21,15 +20,15 @@ export const verifyToken = (req, res, next) => {
   } catch (error) {
     const message =
       error.name === "TokenExpiredError" ? "Token expired" : "Invalid token";
-    res.status(403).json({ message });
+    res.status(401).json({ message });
   }
 };
 
 export const authorizeRoles = (...allowedRoles) => {
   return (req, res, next) => {
-    if (!req.user || !allowedRoles.includes(req.user.role)) {
+    if (!req.user || !allowedRoles.includes(req.user?.role)) {
       return res.status(403).json({
-        message: `You are not allowed to access this resource`,
+        message: `Role ${req.user?.role || 'unknown'} is not allowed to access this resource`,
       });
     }
     next();

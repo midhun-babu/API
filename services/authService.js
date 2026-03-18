@@ -8,26 +8,22 @@ export const validatePassword = async (plainPassword, hashedPassword) => {
 };
 
 
-export const generateTokens = (id) => {
-  if (!process.env.access_token) {
-    throw new Error("Access token not in env");
-  }
-  if(!process.env.refresh_token){
-    throw new Error("Refresh token not present")
-  }
+export const generateTokens = (user) => {
+  const payload = { 
+    id: user._id || user.id, 
+    role: user.role 
+  };
 
-  
   const accessToken = jwt.sign(
-    { id },
-    process.env.access_token,
-    { expiresIn: "15m" } 
+    payload, 
+    process.env.access_token, 
+    { expiresIn: "1h" }
   );
 
-  
   const refreshToken = jwt.sign(
-    { id },
-    process.env.refresh_token,
-    { expiresIn: "7d" } 
+    payload, 
+    process.env.refresh_token, 
+    { expiresIn: "7d" }
   );
 
   return { accessToken, refreshToken };

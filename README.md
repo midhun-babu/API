@@ -28,6 +28,10 @@
     ```
   - Response: accessToken, refreshToken (save as Bearer token or in cookies)
 
+
+
+
+can you check this Order Logic to ensure it pulls this default address during checkout
 ## Token Implementation
 - After login, you receive an `accessToken` (JWT).
 - For all protected endpoints, **you must pass this token as a Bearer token in the `Authorization` header**:

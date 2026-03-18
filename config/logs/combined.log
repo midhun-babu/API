@@ -17,3 +17,19 @@
 {"level":"error","message":"400 - Expected double-quoted property name in JSON at position 136 (line 9 column 3) - /product - POST - ::ffff:127.0.0.1","timestamp":"2026-03-17T06:28:19.220Z"}
 {"level":"error","message":"400 - Unexpected end of JSON input - /cart/add/69b8f7d8f86fd09b4e1c9416 - POST - ::ffff:127.0.0.1","timestamp":"2026-03-17T09:53:11.450Z"}
 {"level":"warn","message":"404 - Page not found: /cart/69b91b370cc2bc4767fbd3a4","timestamp":"2026-03-17T10:02:14.254Z"}
+{"level":"warn","message":"404 - Page not found: /register","timestamp":"2026-03-17T20:07:48.930Z"}
+{"level":"warn","message":"404 - Page not found: /product/update/P101","timestamp":"2026-03-18T04:30:25.441Z"}
+{"level":"warn","message":"404 - Page not found: /cart","timestamp":"2026-03-18T04:32:41.098Z"}
+{"level":"warn","message":"404 - Page not found: /cart","timestamp":"2026-03-18T04:55:01.346Z"}
+{"level":"warn","message":"404 - Page not found: /cart/remove/69b7a9f718aa9064ea9e6db6","timestamp":"2026-03-18T05:17:06.955Z"}
+{"level":"error","message":"500 - Product not found in cart - /cart/remove/69b7a9c018aa9064ea9e6db1 - DELETE - ::ffff:127.0.0.1","timestamp":"2026-03-18T05:57:44.175Z"}
+{"level":"error","message":"500 - Product not found in cart - /cart/remove/69b7a9c018aa9064ea9e6db1 - DELETE - ::ffff:127.0.0.1","timestamp":"2026-03-18T05:57:45.235Z"}
+{"level":"error","message":"500 - Product not found in cart - /cart/remove/69b7a9c018aa9064ea9e6db1 - DELETE - ::ffff:127.0.0.1","timestamp":"2026-03-18T05:57:45.532Z"}
+{"level":"error","message":"500 - Product not found in cart - /cart/remove/69b7a9c018aa9064ea9e6db1 - DELETE - ::ffff:127.0.0.1","timestamp":"2026-03-18T05:57:45.724Z"}
+{"level":"error","message":"500 - Product not found in cart - /cart/remove/69b7a9c018aa9064ea9e6db1 - DELETE - ::ffff:127.0.0.1","timestamp":"2026-03-18T05:57:45.925Z"}
+{"level":"error","message":"500 - Product not found in cart - /cart/remove/69b7a9c018aa9064ea9e6db1 - DELETE - ::ffff:127.0.0.1","timestamp":"2026-03-18T05:57:46.125Z"}
+{"level":"error","message":"500 - Product not found in cart - /cart/remove/69b7a9c018aa9064ea9e6db1 - DELETE - ::ffff:127.0.0.1","timestamp":"2026-03-18T05:57:46.308Z"}
+{"level":"error","message":"500 - Cannot read properties of undefined (reading 'isDefault') - /address - POST - ::ffff:127.0.0.1","timestamp":"2026-03-18T06:37:31.966Z"}
+{"level":"warn","message":"404 - Page not found: /order/place","timestamp":"2026-03-18T08:23:46.048Z"}
+{"level":"warn","message":"404 - Page not found: /order/placeorder","timestamp":"2026-03-18T11:53:31.717Z"}
+{"level":"warn","message":"404 - Page not found: /order","timestamp":"2026-03-18T12:12:36.148Z"}

@@ -12,6 +12,7 @@ import userRoute from "./routes/userRoute.js"
 import productRoute from "./routes/productRoute.js"
 import cartRoute from "./routes/cartRoute.js"
 import orderRoute from "./routes/orderRoute.js"
+import addressRoute from "./routes/addressRoute.js"
 
 
 dotenv.config()
@@ -34,9 +35,9 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoute);
 app.use("/user",userRoute);
 app.use("/product",productRoute);
-app.use("/cart",cartRoute)
-app.use("/order", orderRoute)
-
+app.use("/cart",cartRoute);
+app.use("/order", orderRoute);
+app.use("/address",addressRoute);
 
 
 //Logger

@@ -13,11 +13,10 @@ const cartSchema = new mongoose.Schema({
   active: { type: Boolean, default: true } 
 });
 
-cartSchema.pre("save", function (next) {
+cartSchema.pre("save", function () {
   this.totalPrice = this.products.reduce((acc, item) => {
     return acc + (item.price * item.quantity);
   }, 0);
-  next();
 });
 
 const Cart = mongoose.models.Cart || mongoose.model("Cart", cartSchema);

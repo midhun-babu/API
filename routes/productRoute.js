@@ -8,7 +8,7 @@ router.post("/", verifyToken,authorizeRoles('admin'), productController.createPr
 router.get("/", productController.getProducts);               
 router.get("/:pid", productController.getProductById);       
 router.delete("/:pid", verifyToken, productController.deleteProduct); 
-router.post("/update/:pid",verifyToken,authorizeRoles('admin'),productController.editProduct);
+router.put("/update/:pid",verifyToken,authorizeRoles('admin'),productController.editProduct);
 
 
 export default router;

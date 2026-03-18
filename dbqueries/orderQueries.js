@@ -1,8 +1,7 @@
 import Order from "../models/orderModel.js";
 
 export const createOrder = async (orderData) => {
-  const order = new Order(orderData);
-  return await order.save();
+  return await Order.create(orderData);
 };
 
 export const getOrderById = async (orderId) => {
