@@ -1,15 +1,17 @@
 import * as addressQueries from "../dbqueries/addressQueries.js";
 
 export const addAddress = async (userId, addressData) => {
+  if (!userId) throw { statusCode: 401, message: "Unauthorized" };
+
   const existing = await addressQueries.getAddressesByUserId(userId);
 
-  const isDuplicate = existing.find(addr => 
-    addr.addressLine1.toLowerCase() === addressData.addressLine1.toLowerCase() && 
+  const isDuplicate = existing.find(addr =>
+    addr.addressLine1?.toLowerCase() === addressData.addressLine1?.toLowerCase() &&
     addr.postalCode === addressData.postalCode
   );
 
   if (isDuplicate) {
-    return await addressQueries.updateAddress(isDuplicate._id, userId, addressData);
+    return await addressQueries.updateAddressById(isDuplicate._id, userId, addressData);
   }
 
   if (existing.length === 0) {
@@ -22,19 +24,28 @@ export const addAddress = async (userId, addressData) => {
 };
 
 export const setAsDefault = async (userId, addressId) => {
+  if (!userId) throw { statusCode: 401, message: "Unauthorized" };
+  if (!addressId) throw { statusCode: 400, message: "Address ID required" };
+
   await addressQueries.unsetDefaults(userId);
-  return await addressQueries.updateAddress(addressId, userId, { isDefault: true });
+  return await addressQueries.updateAddressById(addressId, userId, { isDefault: true });
 };
 
-export const getUserAddresses = async (userId) => await addressQueries.getAddressesByUserId(userId);
+export const getUserAddresses = async (userId) => {
+  if (!userId) throw { statusCode: 401, message: "Unauthorized" };
+  return await addressQueries.getAddressesByUserId(userId);
+};
 
 export const updateAddress = async (userId, addressId, updateData) => {
+  if (!userId) throw { statusCode: 401, message: "Unauthorized" };
+  if (!addressId) throw { statusCode: 400, message: "Address ID required" };
+
   if (updateData.isDefault === true) {
     await addressQueries.unsetDefaults(userId);
   }
 
   const updatedAddress = await addressQueries.updateAddressById(addressId, userId, updateData);
-  
+
   if (!updatedAddress) {
     throw { statusCode: 404, message: "Address not found or unauthorized" };
   }

@@ -11,8 +11,14 @@ export const createProduct = async (req, res) => {
 
 export const getProducts = async (req, res) => {
   try {
-    const products = await productService.fetchAllProducts();
-    res.status(200).json(products);
+    const { page = 1, limit = 10 } = req.query;
+
+    const result = await productService.fetchAllProducts({
+      page: parseInt(page),
+      limit: parseInt(limit),
+    });
+
+    res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -21,26 +27,47 @@ export const getProducts = async (req, res) => {
 export const getProductById = async (req, res) => {
   try {
     const product = await productService.fetchProductByPid(req.params.pid);
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
     res.status(200).json(product);
   } catch (error) {
-    res.status(404).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
 export const deleteProduct = async (req, res) => {
   try {
-    await productService.removeProduct(req.params.pid);
+    const product = await productService.removeProduct(req.params.pid);
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
     res.status(200).json({ message: "Product soft-deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-export const editProduct= async (req,res)=>{
-  try{
-    await productService.editProduct(req.params.pid);
-    res.status(200).json({message:"Product updated successfully"}); 
-  }catch(error){
-    res.status(500).json({error:error.message})
+export const editProduct = async (req, res) => {
+  try {
+    const product = await productService.editProduct(
+      req.params.pid,
+      req.body
+    );
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    res.status(200).json({
+      message: "Product updated successfully",
+      product,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
