@@ -33,3 +33,10 @@
 {"level":"warn","message":"404 - Page not found: /order/place","timestamp":"2026-03-18T08:23:46.048Z"}
 {"level":"warn","message":"404 - Page not found: /order/placeorder","timestamp":"2026-03-18T11:53:31.717Z"}
 {"level":"warn","message":"404 - Page not found: /order","timestamp":"2026-03-18T12:12:36.148Z"}
+{"level":"warn","message":"404 - Page not found: /product/add","timestamp":"2026-03-18T19:23:35.367Z"}
+{"level":"error","message":"500 - Product validation failed: price: Path `price` is required., description: Path `description` is required., pname: Path `pname` is required., pid: Path `pid` is required. - /product - POST - ::ffff:127.0.0.1","timestamp":"2026-03-18T19:24:00.750Z"}
+{"level":"error","message":"500 - Product validation failed: price: Path `price` is required., description: Path `description` is required., pname: Path `pname` is required., pid: Path `pid` is required. - /product - POST - ::ffff:127.0.0.1","timestamp":"2026-03-18T19:26:39.394Z"}
+{"level":"error","message":"500 - Product validation failed: price: Path `price` is required., description: Path `description` is required., pname: Path `pname` is required., pid: Path `pid` is required. - /product - POST - ::ffff:127.0.0.1","timestamp":"2026-03-18T19:27:25.589Z"}
+{"level":"error","message":"500 - Product validation failed: price: Path `price` is required., description: Path `description` is required., pname: Path `pname` is required., pid: Path `pid` is required. - /product - POST - ::ffff:127.0.0.1","timestamp":"2026-03-18T19:28:04.622Z"}
+{"level":"error","message":"500 - Product validation failed: price: Path `price` is required., description: Path `description` is required., pname: Path `pname` is required., pid: Path `pid` is required. - /product - POST - ::ffff:127.0.0.1","timestamp":"2026-03-18T19:28:20.321Z"}
+{"level":"error","message":"500 - req is not defined - /product - POST - ::ffff:127.0.0.1","timestamp":"2026-03-18T19:29:25.602Z"}

@@ -2,8 +2,7 @@ import * as productQueries from "../dbqueries/productQueries.js";
 
 export const addProduct = async (productData) => {
   const existing = await productQueries.getProductByPid(productData.pid);
-  console.log(existing);
-  
+
   if (existing) {
     throw new Error("Product with this PID already exists");
   }
@@ -13,13 +12,24 @@ export const addProduct = async (productData) => {
   }
 
   if (productData.stock < 1) {
-    throw new Error("Minimum 1 product needs to ve added");
+    throw new Error("Minimum 1 product needs to be added");
   }
+
   return await productQueries.createProduct(productData);
 };
 
-export const fetchAllProducts = async () => {
-  return await productQueries.getAllProducts();
+export const fetchAllProducts = async ({ page, limit }) => {
+  const skip = (page - 1) * limit;
+
+  const products = await productQueries.getAllProductsPaginated(skip, limit);
+  const total = await productQueries.getProductsCount();
+
+  return {
+    total,
+    page,
+    pages: Math.ceil(total / limit),
+    products,
+  };
 };
 
 export const fetchProductByPid = async (pid) => {
